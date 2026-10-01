@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coconut Oil — Placeholder Site</title>
+<link href="https://fonts.googleapis.com/css2?family=bold&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#030806;--card:rgba(16,34,24,.55);--bd:rgba(80,220,140,.18);--g:#3dff9a;--tx:#dff7e8;--mut:#8fb8a0;--glow:rgba(61,255,154,.35);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#030806}}
+:root[data-theme="dark"]{--bg:#030806}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{background:radial-gradient(900px 500px at 50% -10%,#0b2a1a,transparent),var(--bg);color:var(--tx);font-family:'Lobster',Georgia,cursive;font-size:18px;line-height:1.5;min-height:100%}
+svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#splash{position:fixed;inset:0;z-index:50;background:var(--bg);display:grid;place-items:center;transition:opacity .8s,transform .8s}
+#splash.out{opacity:0;transform:scale(1.08);pointer-events:none}
+.logo{width:min(60vw,240px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--g);border:1px solid var(--g);background:rgba(61,255,154,.05);animation:pulse 2s ease-in-out infinite;padding:20px}
+@keyframes pulse{0%,100%{box-shadow:0 0 25px 4px var(--glow)}50%{box-shadow:0 0 70px 18px var(--glow)}}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;display:flex;justify-content:center;padding:10px;backdrop-filter:blur(14px);background:rgba(3,8,6,.6);border-bottom:1px solid var(--bd)}
+nav .links{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+nav a{color:var(--mut);text-decoration:none;padding:6px 14px;border-radius:99px;transition:.25s;letter-spacing:.04em}
+nav a:hover{color:var(--g);box-shadow:0 0 14px var(--glow)}
+#burger{display:none;background:none;border:1px solid var(--bd);color:var(--g);border-radius:10px;padding:6px 10px;font-size:22px;cursor:pointer}
+@media(max-width:640px){#burger{display:block}nav{justify-content:flex-end}nav .links{display:none;position:absolute;top:100%;left:10px;right:10px;flex-direction:column;background:rgba(6,16,11,.95);border:1px solid var(--bd);border-radius:16px;padding:10px}nav .links.open{display:flex}}
+main{max-width:1000px;margin:0 auto;padding:90px 16px 40px}
+section{padding:36px 0}
+h2{font-weight:400;font-size:2rem;color:var(--g);text-shadow:0 0 18px var(--glow);margin-bottom:18px;text-align:center}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:22px;backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 30px rgba(0,0,0,.4);transition:.3s;margin-bottom:16px}
+.card:hover{border-color:var(--g);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 26px var(--glow)}
+.card h3{font-weight:400;color:var(--g);font-size:1.4rem;margin-bottom:6px}
+.ph{color:var(--mut);font-size:.95rem;border:1px dashed var(--bd);border-radius:12px;padding:10px 12px}
+.img{height:150px;display:grid;place-items:center;text-align:center;margin-bottom:14px;background:repeating-linear-gradient(45deg,rgba(61,255,154,.04) 0 10px,transparent 10px 20px)}
+.hero{text-align:center;padding:50px 22px}.hero .ph{margin:12px auto;max-width:560px}
+.hero .big{font-size:2rem;color:var(--g)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.grid .card{margin:0}
+.ico{font-size:34px;color:var(--g);display:block;margin-bottom:8px;filter:drop-shadow(0 0 8px var(--glow))}
+.more{max-height:0;overflow:hidden;transition:max-height .6s ease;}
+.card.open .more{max-height:1200px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:rgba(61,255,154,.08);color:var(--g);border:1px solid var(--g);border-radius:99px;padding:8px 18px;font:inherit;cursor:pointer;text-decoration:none;transition:.25s}
+.btn:hover{box-shadow:0 0 20px var(--glow)}
+.row{text-align:right;margin-top:12px}
+.more h4{font-weight:400;color:var(--g);margin:14px 0 6px;letter-spacing:.06em}
+.steps{list-style:none;padding:0;display:grid;gap:8px}
+.steps li{display:flex;gap:10px;align-items:center}
+.steps b{flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--g);color:var(--g);display:grid;place-items:center;font-weight:400;font-size:.9rem}
+.contact{text-align:center}.contact .ico{font-size:42px}
+footer{text-align:center;color:var(--mut);padding:30px 16px;border-top:1px solid var(--bd);font-size:.95rem}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+.logo{position:relative;overflow:hidden}
+.logo img,.img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.logo img{border-radius:50%}.img{position:relative;overflow:hidden}.img img{border-radius:12px}
+nav a.active{color:var(--g);background:rgba(61,255,154,.1);box-shadow:0 0 14px var(--glow)}
+</style>
+</head>
+<body>
+<div id="splash"><div class="logo" id="logo"> LOGO PLACEHOLDER </div></div>
+
+<nav><button id="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<div class="links"><a href="#home">HOME</a><a href="#services">SERVICES</a><a href="#products">PRODUCTS</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a></div></nav>
+
+<main>
+<section id="home">
+ <div class="card hero rv"><div class="ph big">MOTTO</div><div class="ph"> NATURE'S REMEDY, BOTTLED WITH LOVE. </div></div>
+ <div class="card rv"><h3>VISION</h3><div class="ph"> VISION STATEMENT PLACEHOLDER </div></div>
+ <div class="card rv"><h3>MISSION</h3><div class="ph"> MISSION STATEMENT PLACEHOLDER </div></div>
+</section>
+
+<section id="services"><h2>Industries We Supply</h2><div class="grid" id="ind"></div></section>
+
+<section id="products"><h2>Products</h2><div id="prod"></div></section>
+
+<section id="about"><h2>About Us</h2>
+ <div class="card rv"><div class="ph img" data-img="story"> IMAGE PLACEHOLDER </div><h3>COMPANY STORY</h3><div class="ph"> FROM UNDERSTANDING GHANA'S NEED TO GROW INTO THE NEW ERA. WE SOUGHT TO MEET GHANA'S FUTURE NEEDS WANTS </div></div>
+ <div class="card rv"><div class="ph img" data-img="founder"> I go put your pic here</div><h3>FOUNDER</h3><div class="ph"> MR. ERNEST ATIASE </div></div>
+ <div class="card rv"><h3>MISSION</h3><div class="ph"> MISSION STATEMENT too </div></div>
+ <div class="card rv"><h3>VISION</h3><div class="ph"> VISION STATEMENT too here</div></div>
+</section>
+
+<section id="contact"><h2>Contact Us</h2>
+ <div class="grid">
+  <div class="card contact rv"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><h3>EMAIL</h3><div class="ph" style="margin-bottom:14px"> MAIL US: ernworls@gmail.com</div><a class="btn" href="mailto:frederickelikplim15@gmail.com">CONTACT VIA GMAIL</a></div>
+  <div class="card contact rv"><svg class="ico" viewBox="0 0 24 24"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.3 18.7z"/><path d="M9 9c0 3 3 6 6 6l1-1.5-2-1-1 .7c-.8-.4-1.6-1.2-2-2l.7-1-1-2z"/></svg><h3>WHATSAPP</h3><div class="ph" style="margin-bottom:14px"> COMPANY MUMBER  </div><a class="btn" href="https://wa.me/" target="_blank" rel="noopener">CONTACT VIA WHATSAPP</a></div>
+  <div class="card contact rv"><svg class="ico" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>LOCATION</h3><div class="ph"> MANKESSIM,CENTRAL REGION,GHANA </div></div>
+ </div>
+</section>
+</main>
+<footer>[ BOTTLED WITH LOVE ]</footer>
+
+<script>
+/* ===== IMAGE NAMES: change only these file names (files go in the same folder as index.html) ===== */
+const IMG={
+ logo:'logo.png',
+ story:'logo1.jpg',
+ founder:'founder.jpg',
+ products:['virgin.jpg','rbd.jpg','refined.jpg','hydro.jpg'] /* same order as the product cards */
+};
+/* ================================================================================================ */
+const img=(f,l)=>`<img src="${f}" alt="" onerror="this.replaceWith('[ ${l} ]')">`;
+logo.innerHTML=img(IMG.logo,'LOGO PLACEHOLDER');
+document.querySelectorAll('[data-img]').forEach(e=>e.innerHTML=img(IMG[e.dataset.img],e.textContent.replace(/[\[\]]/g,'').trim()));
+const I={
+fb:'<path d="M6 3h12l-1 6a5 5 0 0 1-10 0z"/><path d="M12 14v7M8 21h8"/>',
+cos:'<path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/>',
+pc:'<path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/>',
+mf:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',
+hs:'<path d="M3 20V9l9-6 9 6v11z"/><path d="M9 20v-6h6v6"/>',
+rt:'<path d="M4 8h16l-1.5 12h-13z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/>',
+oil:'<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"/>'};
+const ic=k=>`<svg class="ico" viewBox="0 0 24 24">${I[k]}</svg>`;
+const inds=[['fb','Food & Beverage','Cooking, frying, baking and confectionery.'],['cos','Cosmetics','Skin and hair care formulations.'],['pc','Personal Care','Soaps, lotions, balms and similar products.'],['mf','Manufacturing','Raw material for oleochemicals and other industrial products.'],['hs','Hospitality','Kitchens, spas and wellness venues.'],['rt','Retail','Packaged oils for resale on shelves.']];
+ind.innerHTML=inds.map(([k,n,d])=>`<div class="card rv">${ic(k)}<h3>${n}</h3><div class="ph">${d}</div></div>`).join('');
+const P=[
+['Virgin Coconut Oil','Unrefined oil from fresh coconut meat, with natural coconut aroma.','Oil extracted from fresh coconut meat without chemical refining, keeping its natural scent and flavour.','Cooking, baking, skin and hair care, and food products.','Minimal processing keeps the natural character of the coconut.',['Harvest and dehusk fresh coconuts','Remove, wash and grate the meat','Press or centrifuge to separate the oil','Filter and bottle']],
+['RBD Coconut Oil','Refined, bleached and deodorized oil with a neutral taste and scent.','Coconut oil that is refined, bleached and deodorized for a neutral flavour, colour and aroma.','High-heat cooking and frying, food manufacturing, soaps and cosmetics.','Neutral taste and a longer shelf life suit large-scale production.',['Dry the coconut meat into copra','Press the copra to get crude oil','Refine, bleach and deodorize','Filter and pack']],
+['Fractionated Coconut Oil','Light, liquid oil made of medium-chain fatty acids.','Coconut oil with the long-chain fats removed, leaving a light oil that stays liquid at room temperature.','Cosmetics, massage and carrier oils, and nutrition products.','Light texture, clear appearance and long shelf stability.',['Start with refined coconut oil','Separate the medium-chain fractions','Collect the liquid fraction','Filter and package']],
+['Hydrogenated Coconut Oil','Firmer oil with a higher melting point.','Coconut oil processed to raise its melting point and make it more solid and stable.','Confectionery coatings, creamers, bakery fats and some industrial uses.','Higher melting point and stability for heat-sensitive products.',['Start with refined coconut oil','Hydrogenate under controlled conditions','Deodorize and filter','Cool, solidify and pack']]];
+prod.innerHTML=P.map(([n,sd,w,u,y,st],i)=>`<div class="card rv"><div class="ph img">${img(IMG.products[i],'IMAGE PLACEHOLDER')}</div>${ic('oil')}<h3>${n}</h3><div class="ph">${sd}</div>
+<div class="more"><h4>WHAT IT IS</h4><div class="ph">${w}</div><h4>WHAT IT IS USED FOR</h4><div class="ph">${u}</div><h4>WHY THIS OIL</h4><div class="ph">${y}</div><h4>HOW WE MAKE IT</h4><ol class="steps">${st.map((t,i)=>`<li><b>${i+1}</b><span class="ph" style="flex:1">${t}</span></li>`).join('')}</ol></div>
+<div class="row"><button class="btn tg" aria-expanded="false"><span>+ DETAILS</span></button></div></div>`).join('');
+prod.addEventListener('click',e=>{const b=e.target.closest('.tg');if(!b)return;const c=b.closest('.card'),o=c.classList.toggle('open');b.firstElementChild.textContent=o?'−':'+ DETAILS';b.setAttribute('aria-expanded',o)});
+burger.onclick=()=>document.querySelector('.links').classList.toggle('open');
+document.querySelectorAll('.links a').forEach(a=>a.onclick=()=>document.querySelector('.links').classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const lk=[...document.querySelectorAll('.links a')];
+const sp=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)lk.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('main section').forEach(x=>sp.observe(x));
+setTimeout(()=>{splash.classList.add('out');setTimeout(()=>splash.remove(),900)},4000);
+</script>
+</body>
+</html>
